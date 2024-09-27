@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #333;
+            padding-top: 60px;
+            /* Adjusted padding to avoid overlap with fixed nav */
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            /* Ensures the nav stays on top */
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        /* Base styles for the menu */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Hide the menu items on mobile by default */
+        nav .menu {
+            display: flex;
+        }
+
+        /* Menu toggle button for mobile */
+        nav .menu-toggle {
+            display: none;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                /* Adjust based on nav height */
+                left: 0;
+            }
+
+            nav .menu.open {
+                display: flex;
+            }
+
+            nav .menu-toggle {
+                display: block;
+            }
+
+            nav .logo {
+                margin-right: auto;
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a.active {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            max-width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .supervisor-section {
+            margin-top: 40px;
+        }
+
+        .supervisor-picture {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            margin-top: 15px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+        <a href="{{ url_for('landing_page') }}" class="logo">Recipe Generator</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('faqs') }}">FAQs</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <h1>About the Project</h1>
+
+    <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/salahuddin.jpg') }}" alt="Salahuddin Qureshi"
+            class="profile-picture">
+        <p class="description">
+            My name is <strong>Salahuddin Qureshi</strong>, and I am currently pursuing my degree in Computer Science at
+            Sukkur IBA University.
+            This project, my Final Year Project (FYP), aims to generate recipes from food images using machine learning.
+            I have solely led and developed this project, managing all aspects from design to implementation.
+        </p>
+    </div>
+
+    <div class="supervisor-section">
+        <h2>Supervised by</h2>
+        <img src="{{ url_for('static', filename='images/zakria.jpg') }}" alt="Dr. Zakria Jamali"
+            class="supervisor-picture">
+        <p class="description">
+            I am honored to be guided by <strong>Dr. Zakria Jamali</strong>, my FYP supervisor, who has provided
+            invaluable support and feedback throughout this project.
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2024 Recipe Generator Project. All rights reserved.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav .menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #333;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+        }
+
+        /* Base styles for the menu */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Hide the menu items on mobile by default */
+        nav .menu {
+            display: flex;
+        }
+
+        /* Menu toggle button for mobile */
+        nav .menu-toggle {
+            display: none;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                /* Adjust based on nav height */
+                left: 0;
+            }
+
+            nav .menu.open {
+                display: flex;
+            }
+
+            nav .menu-toggle {
+                display: block;
+            }
+
+            nav .logo {
+                margin-right: auto;
+            }
+        }
+
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin: 100px 0 20px;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .contact-form {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+        <a href="{{ url_for('landing_page') }}" class="logo">Recipe Generator</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('faqs') }}">FAQs</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <h1>Contact Us</h1>
+
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:salahuddin.bscsses21@iba-suk.edu.pk">salahuddin.bscsses21@iba-suk.edu.pk</a></p>
+            <p>Email: <a href="mailto:zakria@iba-suk.edu.pk">zakria@iba-suk.edu.pk</a></p>
+            <p>Phone: +92 311 3588345</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Recipe Generator. All rights reserved.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav .menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+
+</body>
+
+</html>

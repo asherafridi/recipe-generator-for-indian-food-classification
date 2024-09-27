@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Base styles for the menu */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Hide the menu items on mobile by default */
+        nav .menu {
+            display: flex;
+        }
+
+        /* Menu toggle button for mobile */
+        nav .menu-toggle {
+            display: none;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                /* Adjust based on nav height */
+                left: 0;
+            }
+
+            nav .menu.open {
+                display: flex;
+            }
+
+            nav .menu-toggle {
+                display: block;
+            }
+
+            nav .logo {
+                margin-right: auto;
+            }
+        }
+
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-top: 80px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 20px;
+            position: relative;
+        }
+
+        .form-container input {
+            width: calc(100% - 22px);
+            /* Adjusted for padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: calc(100% - 22px);
+            /* Adjusted for padding */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #2980b9;
+        }
+
+        .form-container a {
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            background-color: #f9d6d5;
+            border: 1px solid #e74c3c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+        <a href="{{ url_for('landing_page') }}" class="logo">Recipe Generator</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('faqs') }}">FAQs</a></li>
+        </ul>
+    </nav>
+
+    <h1>Login</h1>
+    <div class="form-container">
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <a href="{{ url_for('signup') }}">Don't have an account? Sign up</a>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Recipe Generator. All rights reserved.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav .menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+
+
+</body>
+
+</html>

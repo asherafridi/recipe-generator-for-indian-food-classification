@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding-top: 60px;
+            /* Adjusted padding to avoid overlap with fixed nav */
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            /* Ensures the nav stays on top */
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        /* Base styles for the menu */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Hide the menu items on mobile by default */
+        nav .menu {
+            display: flex;
+        }
+
+        /* Menu toggle button for mobile */
+        nav .menu-toggle {
+            display: none;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                /* Adjust based on nav height */
+                left: 0;
+            }
+
+            nav .menu.open {
+                display: flex;
+            }
+
+            nav .menu-toggle {
+                display: block;
+            }
+
+            nav .logo {
+                margin-right: auto;
+            }
+        }
+
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a.active {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 100px;
+            color: #2c3e50;
+        }
+
+        .faq-container {
+            max-width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+        <a href="{{ url_for('landing_page') }}" class="logo">Recipe Generator</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('faqs') }}">FAQs</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <h2>What types of images can I upload?</h2>
+            <p>You can upload any image of food in common formats such as JPEG, PNG, or GIF. Ensure that the image is
+                clear and well-lit for the best results.</p>
+        </div>
+        <div class="faq-item">
+            <h2>How accurate are the generated recipes?</h2>
+            <p>The accuracy of the generated recipes depends on the quality and clarity of the uploaded image. Our
+                machine learning model is designed to provide the best possible results, but some variations may occur.
+            </p>
+        </div>
+        <div class="faq-item">
+            <h2>Can I use the recipe generator for commercial purposes?</h2>
+            <p>Yes, you can use the recipe generator for personal and commercial purposes. However, please ensure that
+                you comply with any relevant copyright or trademark laws when using the recipes generated.</p>
+        </div>
+        <div class="faq-item">
+            <h2>What should I do if I encounter issues with the website?</h2>
+            <p>If you experience any issues with the website or have questions not covered in the FAQs, please contact
+                our support team via the Contact page for assistance.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Recipe Generator. All rights reserved.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav .menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+
+</body>
+
+</html>

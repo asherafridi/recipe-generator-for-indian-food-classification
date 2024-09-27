@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        .profile-container {
+            padding: 100px 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .profile-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .profile-container h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .profile-info {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .profile-info p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+        <div class="logo">Recipe Generator</div>
+        <ul class="menu">
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('faqs') }}">FAQs</a></li>            
+        </ul>
+    </nav>
+    
+    <div class="profile-container">
+        <h1>{{ user.username }}'s Profile</h1>
+        <img src="{{ user.profile_picture or url_for('static', filename='default_profile.png') }}" alt="Profile Picture">
+
+        <div class="profile-info">
+            <h2>Profile Information</h2>
+            <p>Username: {{ user.username }}</p>
+            <!-- Add more user details as needed -->
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav .menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+    
+</body>
+
+</html>
