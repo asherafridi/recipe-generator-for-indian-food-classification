@@ -221,6 +221,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 import numpy as np
 import google.generativeai as genai
+
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 from flask_sqlalchemy import SQLAlchemy
@@ -248,7 +249,7 @@ login_manager.login_view = 'login'
 migrate = Migrate(app, db)
 
 # Configure Gemini API
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key="AIzaSyDZhHkyh-4RCaSzYPpZV88olZJHw9TIzr0")
 gemini_model = genai.GenerativeModel('gemini-pro')
 
 # Load your trained model
